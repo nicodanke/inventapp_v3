@@ -1,10 +1,10 @@
 syntax = "proto3";
 
-package inventapp_v3.requests.v1.user;
+package inventapp_v3.account_service.requests.v1.user;
 
 import "models/user.proto";
 
-option go_package = "github.com/nicodanke/inventapp_v3/pb/requests/v1/user";
+option go_package = "github.com/nicodanke/inventapp_v3/account-service/pb/requests/v1/user";
 
 message GetUsersRequest {
     optional int32 page = 1;
@@ -12,6 +12,6 @@ message GetUsersRequest {
 }
 
 message GetUsersResponse {
-    repeated inventapp_v3.models.User users= 1;
+    repeated inventapp_v3.account_service.models.User users= 1;
 }
 

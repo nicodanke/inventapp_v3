@@ -7,7 +7,7 @@ import (
 	"sync"
 
 	"github.com/gin-gonic/gin"
-	"github.com/nicodanke/inventapp_v2/token"
+	"github.com/nicodanke/inventapp_v3/account-service/token"
 )
 
 type eventMessage struct {

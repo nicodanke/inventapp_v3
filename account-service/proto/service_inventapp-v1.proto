@@ -16,7 +16,7 @@ import "requests/v1/login/rpc_refresh_token.proto";
 import "protoc-gen-openapiv2/options/annotations.proto";
 import "google/protobuf/empty.proto";
 
-option go_package = "github.com/nicodanke/inventapp_v3/pb";
+option go_package = "github.com/nicodanke/inventapp_v3/account-service/pb";
 
 option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_swagger) = {
     info: {
@@ -24,7 +24,7 @@ option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_swagger) = {
         version: "1.1";
         contact: {
             name: "Nicolás Dankiewicz";
-            url: "https://github.com/nicodanke/inventapp_v3";
+            url: "https://github.com/nicodanke/inventapp_v3/account-service";
             email: "nicodanki@hotmail.com";
         };
     };
@@ -32,7 +32,7 @@ option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_swagger) = {
 
 service InventAppV1 {
     // LOGIN
-    rpc Login (inventapp_v3.requests.v1.login.LoginRequest) returns (inventapp_v3.requests.v1.login.LoginResponse) {
+    rpc Login (inventapp_v3.account_service.requests.v1.login.LoginRequest) returns (inventapp_v3.account_service.requests.v1.login.LoginResponse) {
         option (google.api.http) = {
             post: "/v1/auth/login"
             body: "*"
@@ -43,7 +43,7 @@ service InventAppV1 {
         };    
     }
 
-    rpc RefreshToken (inventapp_v3.requests.v1.login.RefreshTokenRequest) returns (inventapp_v3.requests.v1.login.RefreshTokenResponse) {
+    rpc RefreshToken (inventapp_v3.account_service.requests.v1.login.RefreshTokenRequest) returns (inventapp_v3.account_service.requests.v1.login.RefreshTokenResponse) {
         option (google.api.http) = {
             post: "/v1/auth/refreshToken"
             body: "*"
@@ -56,7 +56,7 @@ service InventAppV1 {
 
 
     // ACCOUNT
-    rpc CreateAccount (inventapp_v3.requests.v1.account.CreateAccountRequest) returns (inventapp_v3.requests.v1.account.CreateAccountResponse) {
+    rpc CreateAccount (inventapp_v3.account_service.requests.v1.account.CreateAccountRequest) returns (inventapp_v3.account_service.requests.v1.account.CreateAccountResponse) {
         option (google.api.http) = {
             post: "/v1/accounts"
             body: "*"
@@ -67,7 +67,7 @@ service InventAppV1 {
         };  
     }
 
-    rpc UpdateAccount (inventapp_v3.requests.v1.account.UpdateAccountRequest) returns (inventapp_v3.requests.v1.account.UpdateAccountResponse) {
+    rpc UpdateAccount (inventapp_v3.account_service.requests.v1.account.UpdateAccountRequest) returns (inventapp_v3.account_service.requests.v1.account.UpdateAccountResponse) {
         option (google.api.http) = {
             patch: "/v1/accounts/{id}"
             body: "*"
@@ -80,7 +80,7 @@ service InventAppV1 {
 
 
     // USER
-    rpc GetUsers (inventapp_v3.requests.v1.user.GetUsersRequest) returns (inventapp_v3.requests.v1.user.GetUsersResponse) {
+    rpc GetUsers (inventapp_v3.account_service.requests.v1.user.GetUsersRequest) returns (inventapp_v3.account_service.requests.v1.user.GetUsersResponse) {
         option (google.api.http) = {
             get: "/v1/users"
         };
@@ -90,7 +90,7 @@ service InventAppV1 {
         };  
     }
 
-    rpc CreateUser (inventapp_v3.requests.v1.user.CreateUserRequest) returns (inventapp_v3.requests.v1.user.CreateUserResponse) {
+    rpc CreateUser (inventapp_v3.account_service.requests.v1.user.CreateUserRequest) returns (inventapp_v3.account_service.requests.v1.user.CreateUserResponse) {
         option (google.api.http) = {
             post: "/v1/users"
             body: "*"
@@ -101,7 +101,7 @@ service InventAppV1 {
         };  
     }
 
-    rpc DeleteUser (inventapp_v3.requests.v1.user.DeleteUserRequest) returns (google.protobuf.Empty) {
+    rpc DeleteUser (inventapp_v3.account_service.requests.v1.user.DeleteUserRequest) returns (google.protobuf.Empty) {
         option (google.api.http) = {
             delete: "/v1/users/{id}"
         };
@@ -113,7 +113,7 @@ service InventAppV1 {
 
 
     // ROLE
-    rpc GetRoles (inventapp_v3.requests.v1.role.GetRolesRequest) returns (inventapp_v3.requests.v1.role.GetRolesResponse) {
+    rpc GetRoles (inventapp_v3.account_service.requests.v1.role.GetRolesRequest) returns (inventapp_v3.account_service.requests.v1.role.GetRolesResponse) {
         option (google.api.http) = {
             get: "/v1/roles"
         };
@@ -123,7 +123,7 @@ service InventAppV1 {
         };  
     }
 
-    rpc CreateRole (inventapp_v3.requests.v1.role.CreateRoleRequest) returns (inventapp_v3.requests.v1.role.CreateRoleResponse) {
+    rpc CreateRole (inventapp_v3.account_service.requests.v1.role.CreateRoleRequest) returns (inventapp_v3.account_service.requests.v1.role.CreateRoleResponse) {
         option (google.api.http) = {
             post: "/v1/roles"
             body: "*"
@@ -134,7 +134,7 @@ service InventAppV1 {
         };  
     }
 
-    rpc DeleteRole (inventapp_v3.requests.v1.role.DeleteRoleRequest) returns (google.protobuf.Empty) {
+    rpc DeleteRole (inventapp_v3.account_service.requests.v1.role.DeleteRoleRequest) returns (google.protobuf.Empty) {
         option (google.api.http) = {
             delete: "/v1/roles/{id}"
         };

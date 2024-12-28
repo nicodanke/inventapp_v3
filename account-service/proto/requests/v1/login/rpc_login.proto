@@ -1,11 +1,11 @@
 syntax = "proto3";
 
-package inventapp_v3.requests.v1.login;
+package inventapp_v3.account_service.requests.v1.login;
 
 import "google/protobuf/timestamp.proto";
 import "models/user.proto";
 
-option go_package = "github.com/nicodanke/inventapp_v3/pb/requests/v1/login";
+option go_package = "github.com/nicodanke/inventapp_v3/account-service/pb/requests/v1/login";
 
 message LoginRequest {
     string username = 1;

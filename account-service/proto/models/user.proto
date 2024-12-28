@@ -1,10 +1,10 @@
 syntax = "proto3";
 
-package inventapp_v3.models;
+package inventapp_v3.account_service.models;
 
 import "google/protobuf/timestamp.proto";
 
-option go_package = "github.com/nicodanke/inventapp_v3/pb/models";
+option go_package = "github.com/nicodanke/inventapp_v3/account-service/pb/models";
 
 message User {
     int64 id = 1;

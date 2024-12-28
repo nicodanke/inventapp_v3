@@ -1,11 +1,11 @@
 syntax = "proto3";
 
-package inventapp_v3.requests.v1.account;
+package inventapp_v3.account_service.requests.v1.account;
 
 import "models/user.proto";
 import "models/account.proto";
 
-option go_package = "github.com/nicodanke/inventapp_v3/pb/requests/v1/account";
+option go_package = "github.com/nicodanke/inventapp_v3/account-service/pb/requests/v1/account";
 
 message CreateAccountRequest {
     string companyName = 1;
@@ -18,7 +18,7 @@ message CreateAccountRequest {
 }
 
 message CreateAccountResponse {
-    inventapp_v3.models.Account account = 1;
-    inventapp_v3.models.User user = 2;
+    inventapp_v3.account_service.models.Account account = 1;
+    inventapp_v3.account_service.models.User user = 2;
 }
 

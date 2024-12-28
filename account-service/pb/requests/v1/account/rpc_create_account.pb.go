@@ -7,7 +7,7 @@
 package account
 
 import (
-	models "github.com/nicodanke/inventapp_v2/pb/models"
+	models "github.com/nicodanke/inventapp_v3/account-service/pb/models"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
@@ -223,14 +223,14 @@ func file_requests_v1_account_rpc_create_account_proto_rawDescGZIP() []byte {
 
 var file_requests_v1_account_rpc_create_account_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
 var file_requests_v1_account_rpc_create_account_proto_goTypes = []interface{}{
-	(*CreateAccountRequest)(nil),  // 0: inventapp_v2.requests.v1.account.CreateAccountRequest
-	(*CreateAccountResponse)(nil), // 1: inventapp_v2.requests.v1.account.CreateAccountResponse
-	(*models.Account)(nil),        // 2: inventapp_v2.models.Account
-	(*models.User)(nil),           // 3: inventapp_v2.models.User
+	(*CreateAccountRequest)(nil),  // 0: inventapp_v3.requests.v1.account.CreateAccountRequest
+	(*CreateAccountResponse)(nil), // 1: inventapp_v3.requests.v1.account.CreateAccountResponse
+	(*models.Account)(nil),        // 2: inventapp_v3.models.Account
+	(*models.User)(nil),           // 3: inventapp_v3.models.User
 }
 var file_requests_v1_account_rpc_create_account_proto_depIdxs = []int32{
-	2, // 0: inventapp_v2.requests.v1.account.CreateAccountResponse.account:type_name -> inventapp_v2.models.Account
-	3, // 1: inventapp_v2.requests.v1.account.CreateAccountResponse.user:type_name -> inventapp_v2.models.User
+	2, // 0: inventapp_v3.requests.v1.account.CreateAccountResponse.account:type_name -> inventapp_v3.models.Account
+	3, // 1: inventapp_v3.requests.v1.account.CreateAccountResponse.user:type_name -> inventapp_v3.models.User
 	2, // [2:2] is the sub-list for method output_type
 	2, // [2:2] is the sub-list for method input_type
 	2, // [2:2] is the sub-list for extension type_name

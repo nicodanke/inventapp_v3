@@ -5,12 +5,12 @@ import (
 	"fmt"
 
 	"github.com/jackc/pgx/v5/pgtype"
-	db "github.com/nicodanke/inventapp_v2/db/sqlc"
-	"github.com/nicodanke/inventapp_v2/pb/requests/v1/user"
-	"github.com/nicodanke/inventapp_v2/sse"
-	"github.com/nicodanke/inventapp_v2/utils"
-	"github.com/nicodanke/inventapp_v2/validators"
-	userValidator "github.com/nicodanke/inventapp_v2/validators/user"
+	db "github.com/nicodanke/inventapp_v3/account-service/db/sqlc"
+	"github.com/nicodanke/inventapp_v3/account-service/pb/requests/v1/user"
+	"github.com/nicodanke/inventapp_v3/account-service/sse"
+	"github.com/nicodanke/inventapp_v3/account-service/utils"
+	"github.com/nicodanke/inventapp_v3/account-service/validators"
+	userValidator "github.com/nicodanke/inventapp_v3/account-service/validators/user"
 	"google.golang.org/genproto/googleapis/rpc/errdetails"
 )
 

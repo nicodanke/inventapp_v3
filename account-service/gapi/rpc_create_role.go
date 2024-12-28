@@ -4,10 +4,10 @@ import (
 	"context"
 	"fmt"
 
-	db "github.com/nicodanke/inventapp_v2/db/sqlc"
-	"github.com/nicodanke/inventapp_v2/pb/requests/v1/role"
-	"github.com/nicodanke/inventapp_v2/sse"
-	roleValidator "github.com/nicodanke/inventapp_v2/validators/role"
+	db "github.com/nicodanke/inventapp_v3/account-service/db/sqlc"
+	"github.com/nicodanke/inventapp_v3/account-service/pb/requests/v1/role"
+	"github.com/nicodanke/inventapp_v3/account-service/sse"
+	roleValidator "github.com/nicodanke/inventapp_v3/account-service/validators/role"
 	"google.golang.org/genproto/googleapis/rpc/errdetails"
 )
 

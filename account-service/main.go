@@ -11,7 +11,7 @@ import (
 	_ "github.com/golang-migrate/migrate/v4/source/file"
 	"github.com/grpc-ecosystem/grpc-gateway/v2/runtime"
 	"github.com/jackc/pgx/v5/pgxpool"
-	db "github.com/nicodanke/inventapp_v3/db/sqlc"
+	db "github.com/nicodanke/inventapp_v3/account-service/db/sqlc"
 	"github.com/nicodanke/inventapp_v3/account-service/gapi"
 	"github.com/nicodanke/inventapp_v3/account-service/sse"
 	"github.com/nicodanke/inventapp_v3/account-service/utils"

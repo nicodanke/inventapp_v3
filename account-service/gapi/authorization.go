@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/nicodanke/inventapp_v3/token"
+	"github.com/nicodanke/inventapp_v3/account-service/account_service/token"
 	"google.golang.org/grpc/metadata"
 )
 

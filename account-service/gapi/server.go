@@ -3,11 +3,11 @@ package gapi
 import (
 	"fmt"
 
-	db "github.com/nicodanke/inventapp_v2/db/sqlc"
-	"github.com/nicodanke/inventapp_v2/pb"
-	"github.com/nicodanke/inventapp_v2/sse"
-	"github.com/nicodanke/inventapp_v2/token"
-	"github.com/nicodanke/inventapp_v2/utils"
+	db "github.com/nicodanke/inventapp_v3/account-service/db/sqlc"
+	"github.com/nicodanke/inventapp_v3/account-service/pb"
+	"github.com/nicodanke/inventapp_v3/account-service/sse"
+	"github.com/nicodanke/inventapp_v3/account-service/token"
+	"github.com/nicodanke/inventapp_v3/account-service/utils"
 )
 
 type Server struct {

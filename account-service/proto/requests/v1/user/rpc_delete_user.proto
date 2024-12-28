@@ -1,8 +1,8 @@
 syntax = "proto3";
 
-package inventapp_v3.requests.v1.user;
+package inventapp_v3.account_service.requests.v1.user;
 
-option go_package = "github.com/nicodanke/inventapp_v3/pb/requests/v1/user";
+option go_package = "github.com/nicodanke/inventapp_v3/account-service/pb/requests/v1/user";
 
 message DeleteUserRequest {
     int64 id = 1;

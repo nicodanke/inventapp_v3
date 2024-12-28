@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"regexp"
 
-	v "github.com/nicodanke/inventapp_v2/validators"
+	v "github.com/nicodanke/inventapp_v3/account-service/validators"
 )
 
 var (

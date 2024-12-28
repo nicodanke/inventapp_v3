@@ -4,9 +4,9 @@ import (
 	"context"
 	"fmt"
 
-	db "github.com/nicodanke/inventapp_v2/db/sqlc"
-	"github.com/nicodanke/inventapp_v2/pb/requests/v1/role"
-	"github.com/nicodanke/inventapp_v2/sse"
+	db "github.com/nicodanke/inventapp_v3/account-service/db/sqlc"
+	"github.com/nicodanke/inventapp_v3/account-service/pb/requests/v1/role"
+	"github.com/nicodanke/inventapp_v3/account-service/sse"
 	"google.golang.org/protobuf/types/known/emptypb"
 )
 

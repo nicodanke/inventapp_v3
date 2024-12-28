@@ -1,16 +1,16 @@
 syntax = "proto3";
 
-package inventapp_v3.requests.v1.role;
+package inventapp_v3.account_service.requests.v1.role;
 
 import "models/role.proto";
 
-option go_package = "github.com/nicodanke/inventapp_v3/pb/requests/v1/role";
+option go_package = "github.com/nicodanke/inventapp_v3/account-service/pb/requests/v1/role";
 
 message CreateRoleRequest {
     string name = 1;
 }
 
 message CreateRoleResponse {
-    inventapp_v3.models.Role role = 1;
+    inventapp_v3.account_service.models.Role role = 1;
 }
 

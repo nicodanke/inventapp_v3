@@ -7,7 +7,7 @@
 package user
 
 import (
-	models "github.com/nicodanke/inventapp_v2/pb/models"
+	models "github.com/nicodanke/inventapp_v3/account-service/pb/models"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
@@ -162,12 +162,12 @@ func file_requests_v1_user_rpc_get_users_proto_rawDescGZIP() []byte {
 
 var file_requests_v1_user_rpc_get_users_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
 var file_requests_v1_user_rpc_get_users_proto_goTypes = []interface{}{
-	(*GetUsersRequest)(nil),  // 0: inventapp_v2.requests.v1.user.GetUsersRequest
-	(*GetUsersResponse)(nil), // 1: inventapp_v2.requests.v1.user.GetUsersResponse
-	(*models.User)(nil),      // 2: inventapp_v2.models.User
+	(*GetUsersRequest)(nil),  // 0: inventapp_v3.requests.v1.user.GetUsersRequest
+	(*GetUsersResponse)(nil), // 1: inventapp_v3.requests.v1.user.GetUsersResponse
+	(*models.User)(nil),      // 2: inventapp_v3.models.User
 }
 var file_requests_v1_user_rpc_get_users_proto_depIdxs = []int32{
-	2, // 0: inventapp_v2.requests.v1.user.GetUsersResponse.users:type_name -> inventapp_v2.models.User
+	2, // 0: inventapp_v3.requests.v1.user.GetUsersResponse.users:type_name -> inventapp_v3.models.User
 	1, // [1:1] is the sub-list for method output_type
 	1, // [1:1] is the sub-list for method input_type
 	1, // [1:1] is the sub-list for extension type_name

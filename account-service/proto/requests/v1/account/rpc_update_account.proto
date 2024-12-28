@@ -1,10 +1,10 @@
 syntax = "proto3";
 
-package inventapp_v3.requests.v1.account;
+package inventapp_v3.account_service.requests.v1.account;
 
 import "models/account.proto";
 
-option go_package = "github.com/nicodanke/inventapp_v3/pb/requests/v1/account";
+option go_package = "github.com/nicodanke/inventapp_v3/account-service/pb/requests/v1/account";
 
 message UpdateAccountRequest {
     int64 id = 1;
@@ -17,6 +17,6 @@ message UpdateAccountRequest {
 }
 
 message UpdateAccountResponse {
-    inventapp_v3.models.Account account = 1;
+    inventapp_v3.account_service.models.Account account = 1;
 }
 
