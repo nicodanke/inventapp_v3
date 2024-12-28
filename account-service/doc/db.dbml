@@ -1,0 +1,262 @@
+Project InventApp {
+  database_type: 'PostgreSQL'
+  Note: '''
+    # InventApp Database
+  '''
+}
+
+
+Table "account" {
+  "id" int8 [not null, default: `nextval('account_id_seq'::regclass)`]
+  "code" varchar [not null]
+  "company_name" varchar [not null]
+  "phone" varchar
+  "email" varchar [not null]
+  "web_url" varchar
+  "active" bool [not null, default: false]
+  "created_at" timestamptz [not null, default: `now()`]
+  "updated_at" timestamptz [not null, default: `now()`]
+
+Indexes {
+  id [pk]
+}
+}
+
+Table "account_address" {
+  "account_id" int8 [not null, default: `nextval('account_address_account_id_seq'::regclass)`]
+  "country" varchar [not null]
+  "state" varchar
+  "sub_state" varchar
+  "street" varchar
+  "number" varchar
+  "unit" varchar
+  "postal_code" varchar
+  "lat" float8
+  "lng" float8
+
+Indexes {
+  account_id [pk]
+}
+}
+
+Table "account_module" {
+  "id" int8 [not null, default: `nextval('account_module_id_seq'::regclass)`]
+  "module_id" int8 [not null, default: `nextval('account_module_module_id_seq'::regclass)`]
+  "account_id" int8 [not null, default: `nextval('account_module_account_id_seq'::regclass)`]
+  "started_at" timestamptz [not null, default: `now()`]
+  "ended_at" timestamptz
+  "price" float8 [not null]
+
+Indexes {
+  (id, module_id, account_id) [pk]
+}
+}
+
+Table "account_plan" {
+  "id" int8 [not null, default: `nextval('account_plan_id_seq'::regclass)`]
+  "plan_id" int8 [not null, default: `nextval('account_plan_plan_id_seq'::regclass)`]
+  "account_id" int8 [not null, default: `nextval('account_plan_account_id_seq'::regclass)`]
+  "started_at" timestamptz [not null, default: `now()`]
+  "ended_at" timestamptz
+  "price" float8 [not null]
+
+Indexes {
+  (id, plan_id, account_id) [pk]
+}
+}
+
+Table "account_promotion" {
+  "id" int8 [not null, default: `nextval('account_promotion_id_seq'::regclass)`]
+  "promotion_id" int8 [not null, default: `nextval('account_promotion_promotion_id_seq'::regclass)`]
+  "account_id" int8 [not null, default: `nextval('account_promotion_account_id_seq'::regclass)`]
+  "started_at" timestamptz [not null, default: `now()`]
+  "ended_at" timestamptz
+
+Indexes {
+  (id, promotion_id, account_id) [pk]
+}
+}
+
+Table "feature" {
+  "id" int8 [not null, default: `nextval('feature_id_seq'::regclass)`]
+  "name" varchar [not null]
+  "code" varchar [not null]
+
+Indexes {
+  id [pk]
+}
+}
+
+Table "module" {
+  "id" int8 [not null, default: `nextval('module_id_seq'::regclass)`]
+  "name" varchar [not null]
+  "code" varchar [not null]
+
+Indexes {
+  id [pk]
+}
+}
+
+Table "module_country" {
+  "module_id" int8 [not null, default: `nextval('module_country_module_id_seq'::regclass)`]
+  "country" varchar [not null]
+  "price" float8 [not null]
+
+Indexes {
+  (module_id, country) [pk]
+}
+}
+
+Table "module_feature" {
+  "module_id" int8 [not null, default: `nextval('module_feature_module_id_seq'::regclass)`]
+  "feature_id" int8 [not null, default: `nextval('module_feature_feature_id_seq'::regclass)`]
+
+Indexes {
+  (module_id, feature_id) [pk]
+}
+}
+
+Table "permission" {
+  "id" int8 [not null, default: `nextval('permission_id_seq'::regclass)`]
+  "name" varchar [not null]
+  "description" varchar
+  "parent_id" int8
+
+Indexes {
+  id [pk]
+}
+  Note: 'Common table shared by all accounts'
+}
+
+Table "plan" {
+  "id" int8 [not null, default: `nextval('plan_id_seq'::regclass)`]
+  "name" varchar [not null]
+  "description" varchar
+
+Indexes {
+  id [pk]
+}
+}
+
+Table "plan_country" {
+  "plan_id" int8 [not null, default: `nextval('plan_country_plan_id_seq'::regclass)`]
+  "country" varchar [not null]
+  "price" float8 [not null]
+
+Indexes {
+  (plan_id, country) [pk]
+}
+}
+
+Table "plan_module" {
+  "plan_id" int8 [not null, default: `nextval('plan_module_plan_id_seq'::regclass)`]
+  "module_id" int8 [not null, default: `nextval('plan_module_module_id_seq'::regclass)`]
+
+Indexes {
+  (plan_id, module_id) [pk]
+}
+}
+
+Table "promotion" {
+  "id" int8 [not null, default: `nextval('promotion_id_seq'::regclass)`]
+  "name" varchar [not null]
+  "discount_percent" float8
+  "amount" float8
+
+Indexes {
+  id [pk]
+}
+}
+
+Table "role" {
+  "id" int8 [not null, default: `nextval('role_id_seq'::regclass)`]
+  "name" varchar [not null]
+  "description" varchar
+  "account_id" int8 [not null, default: `nextval('role_account_id_seq'::regclass)`]
+
+Indexes {
+  id [pk]
+}
+}
+
+Table "role_permission" {
+  "role_id" int8 [not null, default: `nextval('role_permission_role_id_seq'::regclass)`]
+  "permission_id" int8 [not null, default: `nextval('role_permission_permission_id_seq'::regclass)`]
+
+Indexes {
+  (role_id, permission_id) [pk]
+}
+}
+
+Table "session" {
+  "id" uuid [not null]
+  "user_id" int8 [not null, default: `nextval('user_id_seq'::regclass)`]
+  "refresh_token" varchar [not null]
+  "user_agent" varchar [not null]
+  "client_ip" varchar [not null]
+  "is_blocked" bool [not null, default: false]
+  "created_at" timestamptz [not null, default: `now()`]
+  "expires_at" timestamptz [not null]
+
+Indexes {
+  id [pk]
+}
+}
+
+Table "user" {
+  "id" int8 [not null, default: `nextval('user_id_seq'::regclass)`]
+  "username" varchar [not null]
+  "password" varchar [not null]
+  "name" varchar [not null]
+  "lastname" varchar [not null]
+  "email" varchar [not null]
+  "phone" varchar
+  "active" bool [not null, default: true]
+  "created_at" timestamptz [not null, default: `now()`]
+  "updated_at" timestamptz [not null, default: `now()`]
+  "password_changed_at" timestamptz [not null, default: `now()`]
+  "role_id" int8 [not null, default: `nextval('user_role_id_seq'::regclass)`]
+  "account_id" int8 [not null, default: `nextval('user_account_id_seq'::regclass)`]
+
+Indexes {
+  id [pk]
+}
+}
+
+Ref:"account"."id" < "account_address"."account_id"
+
+Ref:"account"."id" < "account_module"."account_id"
+
+Ref:"module"."id" < "account_module"."module_id"
+
+Ref:"plan"."id" < "account_plan"."plan_id"
+
+Ref:"account"."id" < "account_plan"."account_id"
+
+Ref:"account"."id" < "account_promotion"."account_id"
+
+Ref:"promotion"."id" < "account_promotion"."promotion_id"
+
+Ref:"module"."id" < "module_country"."module_id"
+
+Ref:"module"."id" < "module_feature"."module_id"
+
+Ref:"feature"."id" < "module_feature"."feature_id"
+
+Ref:"permission"."id" < "permission"."parent_id"
+
+Ref:"plan"."id" < "plan_country"."plan_id"
+
+Ref:"module"."id" < "plan_module"."module_id"
+
+Ref:"plan"."id" < "plan_module"."plan_id"
+
+Ref:"account"."id" < "role"."account_id"
+
+Ref:"role"."id" < "role_permission"."role_id"
+
+Ref:"permission"."id" < "role_permission"."permission_id"
+
+Ref:"account"."id" < "user"."account_id"
+
+Ref:"user"."id" < "session"."user_id"

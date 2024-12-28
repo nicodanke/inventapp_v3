@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package inventapp_v3.requests.v1.login;
+
+import "google/protobuf/timestamp.proto";
+
+option go_package = "github.com/nicodanke/inventapp_v3/pb/requests/v1/login";
+
+message RefreshTokenRequest {
+    string refreshToken = 1;
+}
+
+message RefreshTokenResponse {
+    string accessToken = 1;
+    google.protobuf.Timestamp accessTokenExpiresAt = 2;
+}

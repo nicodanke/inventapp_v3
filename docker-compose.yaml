@@ -1,0 +1,43 @@
+version: "3.9"
+services:
+  reverse-proxy:
+    image: traefik:v3.2
+    networks:
+      - traefik-net
+    command: --api.insecure=true --providers.docker
+    ports:
+      - "80:80"
+      - "8080:8080"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+  account-db:
+    image: postgres:15-alpine
+    networks:
+      - traefik-net
+    environment:
+     - POSTGRES_USER=root
+     - POSTGRES_PASSWORD=secret
+     - POSTGRES_DB=account_db
+    ports:
+      - "5433:5432"
+    volumes:
+      - ./postgres-account-db:/data/postgres
+  account-service:
+    build:
+      context: .
+      dockerfile: ./account-service/app.dockerfile
+    networks:
+      - traefik-net
+    environment:
+     - IA_ENVIRONMENT=devdocker
+    labels:
+      - "traefik.http.routers.account.rule=Path(`/auth/createAccount`)"
+      - "traefik.http.services.account.loadbalancer.server.port=8081"
+    depends_on:
+     - account-db
+    entrypoint: [ "/app/wait-for.sh", "account-db:5432", "--", "/app/start.sh" ]
+    command: [ "/app/main" ]
+
+networks:
+  traefik-net:
+    external: true

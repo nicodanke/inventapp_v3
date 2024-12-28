@@ -1,0 +1,146 @@
+syntax = "proto3";
+
+package pb;
+
+import "google/api/annotations.proto";
+import "requests/v1/account/rpc_create_account.proto";
+import "requests/v1/account/rpc_update_account.proto";
+import "requests/v1/user/rpc_get_users.proto";
+import "requests/v1/user/rpc_create_user.proto";
+import "requests/v1/user/rpc_delete_user.proto";
+import "requests/v1/role/rpc_get_roles.proto";
+import "requests/v1/role/rpc_create_role.proto";
+import "requests/v1/role/rpc_delete_role.proto";
+import "requests/v1/login/rpc_login.proto";
+import "requests/v1/login/rpc_refresh_token.proto";
+import "protoc-gen-openapiv2/options/annotations.proto";
+import "google/protobuf/empty.proto";
+
+option go_package = "github.com/nicodanke/inventapp_v3/pb";
+
+option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_swagger) = {
+    info: {
+        title: "InventApp API";
+        version: "1.1";
+        contact: {
+            name: "Nicolás Dankiewicz";
+            url: "https://github.com/nicodanke/inventapp_v3";
+            email: "nicodanki@hotmail.com";
+        };
+    };
+};
+
+service InventAppV1 {
+    // LOGIN
+    rpc Login (inventapp_v3.requests.v1.login.LoginRequest) returns (inventapp_v3.requests.v1.login.LoginResponse) {
+        option (google.api.http) = {
+            post: "/v1/auth/login"
+            body: "*"
+        };
+        option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+            description: "Login and get a token (PASETO) to make authenticated requests.";
+            summary: "Login User"
+        };    
+    }
+
+    rpc RefreshToken (inventapp_v3.requests.v1.login.RefreshTokenRequest) returns (inventapp_v3.requests.v1.login.RefreshTokenResponse) {
+        option (google.api.http) = {
+            post: "/v1/auth/refreshToken"
+            body: "*"
+        };
+        option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+            description: "Allows to send the refreshToken to get a new accessToken.";
+            summary: "Refresh Access Token"
+        };    
+    }
+
+
+    // ACCOUNT
+    rpc CreateAccount (inventapp_v3.requests.v1.account.CreateAccountRequest) returns (inventapp_v3.requests.v1.account.CreateAccountResponse) {
+        option (google.api.http) = {
+            post: "/v1/accounts"
+            body: "*"
+        };
+        option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+            description: "Allow to create a new account and base user and configurations";
+            summary: "Create Account"
+        };  
+    }
+
+    rpc UpdateAccount (inventapp_v3.requests.v1.account.UpdateAccountRequest) returns (inventapp_v3.requests.v1.account.UpdateAccountResponse) {
+        option (google.api.http) = {
+            patch: "/v1/accounts/{id}"
+            body: "*"
+          };
+        option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+            description: "Allow to make a partial update of an account";
+            summary: "Update Account"
+        };  
+    }
+
+
+    // USER
+    rpc GetUsers (inventapp_v3.requests.v1.user.GetUsersRequest) returns (inventapp_v3.requests.v1.user.GetUsersResponse) {
+        option (google.api.http) = {
+            get: "/v1/users"
+        };
+        option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+            description: "Allow to get all users paginated. Auth required";
+            summary: "Get all users"
+        };  
+    }
+
+    rpc CreateUser (inventapp_v3.requests.v1.user.CreateUserRequest) returns (inventapp_v3.requests.v1.user.CreateUserResponse) {
+        option (google.api.http) = {
+            post: "/v1/users"
+            body: "*"
+        };
+        option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+            description: "Allow to create a new user. Auth required";
+            summary: "Create User"
+        };  
+    }
+
+    rpc DeleteUser (inventapp_v3.requests.v1.user.DeleteUserRequest) returns (google.protobuf.Empty) {
+        option (google.api.http) = {
+            delete: "/v1/users/{id}"
+        };
+        option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+            description: "Allow to delete a user by id. Auth required";
+            summary: "Delete user by id"
+        };  
+    }
+
+
+    // ROLE
+    rpc GetRoles (inventapp_v3.requests.v1.role.GetRolesRequest) returns (inventapp_v3.requests.v1.role.GetRolesResponse) {
+        option (google.api.http) = {
+            get: "/v1/roles"
+        };
+        option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+            description: "Allow to get all roles paginated. Auth required";
+            summary: "Get all roles"
+        };  
+    }
+
+    rpc CreateRole (inventapp_v3.requests.v1.role.CreateRoleRequest) returns (inventapp_v3.requests.v1.role.CreateRoleResponse) {
+        option (google.api.http) = {
+            post: "/v1/roles"
+            body: "*"
+        };
+        option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+            description: "Allow to create a new role. Auth required";
+            summary: "Create Role"
+        };  
+    }
+
+    rpc DeleteRole (inventapp_v3.requests.v1.role.DeleteRoleRequest) returns (google.protobuf.Empty) {
+        option (google.api.http) = {
+            delete: "/v1/roles/{id}"
+        };
+        option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+            description: "Allow to delete a role by id. Auth required";
+            summary: "Delete role by id"
+        };  
+    }
+}

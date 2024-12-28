@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package inventapp_v3.requests.v1.user;
+
+import "models/user.proto";
+
+option go_package = "github.com/nicodanke/inventapp_v3/pb/requests/v1/user";
+
+message CreateUserRequest {
+    string name = 1;
+    string lastname = 2;
+    string username = 3;
+    string email = 4;
+    string password = 5;
+    int64 roleId = 6;
+    optional string phone = 7;
+    optional bool active = 8;
+    optional bool isAdmin = 9;
+}
+
+message CreateUserResponse {
+    inventapp_v3.models.User user = 1;
+}
+

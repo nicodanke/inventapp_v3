@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package inventapp_v3.requests.v1.account;
+
+import "models/account.proto";
+
+option go_package = "github.com/nicodanke/inventapp_v3/pb/requests/v1/account";
+
+message UpdateAccountRequest {
+    int64 id = 1;
+    optional string companyName = 2;
+    optional string email = 3;
+    optional bool active = 4;
+    optional string phone = 5;
+    optional string webUrl = 6;
+    optional string country = 7;
+}
+
+message UpdateAccountResponse {
+    inventapp_v3.models.Account account = 1;
+}
+

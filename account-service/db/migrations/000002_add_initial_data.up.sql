@@ -1,0 +1,40 @@
+INSERT INTO plan (name) VALUES  ('Basico'),
+                                ('Intermedio'),
+                                ('Pro');
+
+INSERT INTO plan_country (plan_id, country, price) VALUES   (1, 'ARG', 5000),
+                                                            (2, 'ARG', 7000),
+                                                            (3, 'ARG', 9000);
+
+INSERT INTO promotion (name, discount_percent) VALUES   ('5off', 5),
+                                                        ('10off', 10),
+                                                        ('15off', 15),
+                                                        ('20off', 20),
+                                                        ('25off', 25),
+                                                        ('30off', 30),
+                                                        ('35off', 35),
+                                                        ('40off', 40),
+                                                        ('45off', 45),
+                                                        ('50off', 50),
+                                                        ('55off', 55),
+                                                        ('60off', 60),
+                                                        ('65off', 65),
+                                                        ('70off', 70),
+                                                        ('75off', 75),
+                                                        ('80off', 80),
+                                                        ('85off', 85),
+                                                        ('90off', 90),
+                                                        ('95off', 95),
+                                                        ('100off', 100);
+
+INSERT INTO permission (id, name, parent_id) VALUES (1, 'Admin Roles', null),
+                                                    (2, 'Ver Roles', 1),
+                                                    (3, 'Crear Rol', 1),
+                                                    (4, 'Actualizar Rol', 1),
+                                                    (5, 'Eliminar Rol', 1),
+                                                    (6, 'Admin Usuarios', null),
+                                                    (7, 'Ver Usuario', 6),
+                                                    (8, 'Crear Usuario', 6),
+                                                    (9, 'Actualizar Usuario', 6),
+                                                    (10, 'Eliminar Usuario', 6),
+                                                    (11, 'Visualizar información de la cuenta', null);

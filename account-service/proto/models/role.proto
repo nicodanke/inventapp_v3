@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package inventapp_v3.models;
+
+option go_package = "github.com/nicodanke/inventapp_v3/pb/models";
+
+message Role {
+    int64 id = 1;
+    string name = 2;
+}
+

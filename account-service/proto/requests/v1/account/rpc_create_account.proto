@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package inventapp_v3.requests.v1.account;
+
+import "models/user.proto";
+import "models/account.proto";
+
+option go_package = "github.com/nicodanke/inventapp_v3/pb/requests/v1/account";
+
+message CreateAccountRequest {
+    string companyName = 1;
+    string name = 2;
+    string lastname = 3;
+    string username = 4;
+    string email = 5;
+    string password = 6;
+    string country = 7;
+}
+
+message CreateAccountResponse {
+    inventapp_v3.models.Account account = 1;
+    inventapp_v3.models.User user = 2;
+}
+

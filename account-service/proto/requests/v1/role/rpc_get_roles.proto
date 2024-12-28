@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package inventapp_v3.requests.v1.role;
+
+import "models/role.proto";
+
+option go_package = "github.com/nicodanke/inventapp_v3/pb/requests/v1/role";
+
+message GetRolesRequest {
+    optional int32 page = 1;
+    optional int32 size = 2;
+}
+
+message GetRolesResponse {
+    repeated inventapp_v3.models.Role roles= 1;
+}
+
