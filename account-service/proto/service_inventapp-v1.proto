@@ -21,7 +21,7 @@ option go_package = "github.com/nicodanke/inventapp_v3/account-service/pb";
 option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_swagger) = {
     info: {
         title: "InventApp API";
-        version: "1.1";
+        version: "1.0";
         contact: {
             name: "Nicolás Dankiewicz";
             url: "https://github.com/nicodanke/inventapp_v3/account-service";

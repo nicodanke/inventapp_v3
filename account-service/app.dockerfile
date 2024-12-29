@@ -9,7 +9,7 @@ RUN go build -o /go/bin/main ./account-service/main.go
 FROM alpine:3.19
 WORKDIR /app
 COPY --from=builder /go/bin .
-COPY account-service/dev.env .
+COPY account-service/config ./config
 COPY account-service/db/migrations ./db/migrations
 COPY start.sh .
 COPY wait-for.sh .

@@ -13,7 +13,7 @@ message LoginRequest {
 }
 
 message LoginResponse {
-    models.User user = 1;
+    inventapp_v3.account_service.models.User user = 1;
     string sessionId = 2;
     string accessToken = 3;
     string refreshToken = 4;
