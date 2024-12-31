@@ -24,14 +24,18 @@ services:
       - ./postgres-account-db:/data/postgres
   account-service:
     build:
-      context: .
-      dockerfile: ./account-service/app.dockerfile
+      context: ./account-service
+    container_name: account-service
     networks:
       - traefik-net
     environment:
      - IA_ENVIRONMENT=devdocker
     labels:
-      - "traefik.http.routers.account.rule=Path(`/auth/createAccount`)"
+      - "traefik.http.routers.account.rule=
+          PathPrefix(`/v1/accounts`) ||
+          PathPrefix(`/v1/users`) ||
+          PathPrefix(`/v1/auth/login`)
+          "
       - "traefik.http.services.account.loadbalancer.server.port=8081"
     depends_on:
      - account-db

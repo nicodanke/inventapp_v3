@@ -22,20 +22,19 @@ type Config struct {
 func LoadConfig() (config Config, err error) {
 	value, ok := os.LookupEnv("IA_ENVIRONMENT")
 	if ok {
-		LoadCustomConfig(value)
-		return
+		return LoadCustomConfig(value)
 	}
 
-	LoadCustomConfig("dev")
-	return
+	return LoadCustomConfig("dev")
 }
 
 func LoadCustomConfig(environment string) (config Config, err error) {
-
+	viper.AddConfigPath("config")
+	viper.AddConfigPath(".")
 	viper.SetConfigName(environment)
 	viper.SetConfigType("env")
-	viper.AddConfigPath("/config")
-	viper.AddConfigPath(".")
+
+	viper.AutomaticEnv()
 
 	err = viper.ReadInConfig()
 	if err != nil {

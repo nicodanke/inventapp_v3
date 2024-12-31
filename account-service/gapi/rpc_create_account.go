@@ -2,6 +2,7 @@ package gapi
 
 import (
 	"context"
+	"fmt"
 	"strings"
 
 	db "github.com/nicodanke/inventapp_v3/account-service/db/sqlc"
@@ -16,6 +17,7 @@ import (
 )
 
 func (server *Server) CreateAccount(ctx context.Context, req *account.CreateAccountRequest) (*account.CreateAccountResponse, error) {
+	fmt.Println("CreateAccount")
 	violations := validateCreateAccountRequest(req)
 	if violations != nil {
 		return nil, invalidArgumentError(violations)
